@@ -1,0 +1,18 @@
+CAMPUS RESOURCE BOOKING SYSTEM
+
+1. Run setup-portable-dotnet.cmd once.
+2. Install/start MySQL and follow README.md to create the database and user.
+3. Open PowerShell in this folder and set:
+   $env:DOTNET_ROOT = "$PWD\.tools\dotnet"
+   $env:PATH = "$env:DOTNET_ROOT;$env:DOTNET_ROOT\tools;$env:PATH"
+   $env:ConnectionStrings__DefaultConnection = "Server=localhost;Port=3306;Database=campus_resource_booking;User=campus_app;Password=YOUR_PASSWORD;"
+   $env:ADMIN_EMAIL = "admin@college.local"
+   $env:ADMIN_PASSWORD = "Your-Strong-Password-123"
+4. Run: dotnet restore
+5. Run: dotnet run
+6. Open the localhost address printed in the terminal.
+
+Read README.md for database setup, troubleshooting and project explanation.
+The app source is portable; MySQL Server remains a separate dependency.
+
+Note: On first launch, the app creates tables in an empty database automatically. For schema evolution / required migration assessment, see the migration note in README.md.

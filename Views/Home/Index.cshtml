@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Home";
+}
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-8">
+      <span class="badge text-bg-light mb-3">Campus facilities, made simple</span>
+      <h1 class="display-5 fw-bold">Book the right space for your next big idea.</h1>
+      <p class="lead mt-3">Find campus labs, seminar halls, classrooms and equipment. Submit requests and track their status in one place.</p>
+      <a class="btn btn-light btn-lg me-2" asp-controller="Resources" asp-action="Index">Explore resources</a>
+      @if (User.Identity?.IsAuthenticated == true) {
+        <a class="btn btn-outline-light btn-lg" asp-controller="Bookings" asp-action="Create">Make a booking</a>
+      } else {
+        <a class="btn btn-outline-light btn-lg" asp-area="Identity" asp-page="/Account/Register">Get started</a>
+      }
+    </div>
+    <div class="col-lg-4"><div class="hero-stat"><div class="fs-1">🏫</div><h4>One campus</h4><p class="mb-0">Resources, requests and approvals in one simple system.</p></div></div>
+  </div>
+</section>
+<div class="row g-3">
+  <div class="col-md-4"><div class="card h-100"><div class="card-body"><div class="feature-icon">01</div><h5>Discover</h5><p class="text-muted mb-0">Search by resource name, category or location.</p></div></div></div>
+  <div class="col-md-4"><div class="card h-100"><div class="card-body"><div class="feature-icon">02</div><h5>Request</h5><p class="text-muted mb-0">Choose a date and time, then explain your purpose.</p></div></div></div>
+  <div class="col-md-4"><div class="card h-100"><div class="card-body"><div class="feature-icon">03</div><h5>Track</h5><p class="text-muted mb-0">Follow pending, approved, rejected and cancelled requests.</p></div></div></div>
+</div>

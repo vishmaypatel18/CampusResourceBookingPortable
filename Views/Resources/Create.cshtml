@@ -1,0 +1,9 @@
+@model Resource
+@{ ViewData["Title"] = "Add resource"; }
+<h1 class="h2">Add resource</h1>
+<form asp-action="Create" method="post" class="form-panel">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<partial name="_ResourceForm" model="Model" />
+<button class="btn btn-primary">Save resource</button> <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

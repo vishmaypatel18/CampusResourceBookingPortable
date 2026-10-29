@@ -1,0 +1,10 @@
+bin/
+obj/
+.tools/
+.packages/
+.vs/
+.vscode/
+*.user
+*.suo
+appsettings.Development.json
+dotnet-install.ps1

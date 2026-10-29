@@ -1,0 +1,13 @@
+@model BookingCreateViewModel
+@{ ViewData["Title"] = "Request a booking"; }
+<h1 class="h2">Request a booking</h1><p class="text-muted">Your request will remain pending until an administrator reviews it.</p>
+<form asp-action="Create" method="post" class="form-panel">
+<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+<div class="mb-3"><label asp-for="ResourceId" class="form-label">Resource</label><select asp-for="ResourceId" asp-items="Model.Resources" class="form-select"><option value="">Choose a resource...</option></select><span asp-validation-for="ResourceId" class="text-danger"></span></div>
+<div class="row"><div class="col-md-4 mb-3"><label asp-for="BookingDate" class="form-label"></label><input asp-for="BookingDate" type="date" class="form-control" /><span asp-validation-for="BookingDate" class="text-danger"></span></div>
+<div class="col-md-4 mb-3"><label asp-for="StartTime" class="form-label">Start time</label><input asp-for="StartTime" type="time" class="form-control" /><span asp-validation-for="StartTime" class="text-danger"></span></div>
+<div class="col-md-4 mb-3"><label asp-for="EndTime" class="form-label">End time</label><input asp-for="EndTime" type="time" class="form-control" /><span asp-validation-for="EndTime" class="text-danger"></span></div></div>
+<div class="mb-3"><label asp-for="Purpose" class="form-label"></label><textarea asp-for="Purpose" class="form-control" rows="3" placeholder="Explain why you need this resource"></textarea><span asp-validation-for="Purpose" class="text-danger"></span></div>
+<button class="btn btn-primary">Submit request</button> <a asp-controller="Resources" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

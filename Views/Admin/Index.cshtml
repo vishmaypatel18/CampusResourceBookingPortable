@@ -1,0 +1,8 @@
+@model AdminDashboardViewModel
+@{ ViewData["Title"] = "Admin dashboard"; }
+<div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h2">Admin dashboard</h1><p class="text-muted mb-0">Campus booking overview</p></div><a asp-action="Bookings" class="btn btn-primary">Manage bookings</a></div>
+<div class="row g-3">
+@{ var cards = new[] { ("Resources", Model.TotalResources, "primary"), ("All bookings", Model.TotalBookings, "dark"), ("Pending", Model.PendingBookings, "warning"), ("Approved", Model.ApprovedBookings, "success"), ("Rejected / cancelled", Model.RejectedOrCancelledBookings, "secondary") }; }
+@foreach (var c in cards) { <div class="col-sm-6 col-xl"><div class="card dashboard-card border-0 shadow-sm"><div class="card-body"><div class="text-muted small">@c.Item1</div><div class="display-6 fw-semibold">@c.Item2</div><div class="progress mt-2"><div class="progress-bar bg-@c.Item3" style="width:100%"></div></div></div></div></div> }
+</div>
+<div class="card mt-4"><div class="card-body"><h5>Administrator tasks</h5><p class="text-muted">Add or update resources, review pending requests, and make sure booking times do not overlap.</p><a asp-controller="Resources" asp-action="Create" class="btn btn-outline-primary me-2">Add resource</a><a asp-action="Bookings" asp-route-status="Pending" class="btn btn-outline-dark">View pending requests</a></div></div>

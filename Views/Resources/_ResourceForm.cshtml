@@ -1,0 +1,7 @@
+@model Resource
+<div class="mb-3"><label asp-for="Name" class="form-label"></label><input asp-for="Name" class="form-control" /><span asp-validation-for="Name" class="text-danger"></span></div>
+<div class="row"><div class="col-md-6 mb-3"><label asp-for="Category" class="form-label"></label><select asp-for="Category" class="form-select"><option>Computer Lab</option><option>Seminar Hall</option><option>Classroom</option><option>Projector</option><option>Lab Equipment</option><option>Conference Room</option></select><span asp-validation-for="Category" class="text-danger"></span></div>
+<div class="col-md-6 mb-3"><label asp-for="Capacity" class="form-label"></label><input asp-for="Capacity" class="form-control" /><span asp-validation-for="Capacity" class="text-danger"></span></div></div>
+<div class="mb-3"><label asp-for="Location" class="form-label"></label><input asp-for="Location" class="form-control" /><span asp-validation-for="Location" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="Description" class="form-label"></label><textarea asp-for="Description" class="form-control" rows="3"></textarea><span asp-validation-for="Description" class="text-danger"></span></div>
+<div class="form-check mb-3"><input asp-for="IsAvailable" class="form-check-input" /><label asp-for="IsAvailable" class="form-check-label"></label></div>

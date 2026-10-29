@@ -1,0 +1,20 @@
+@model IEnumerable<Resource>
+@{ ViewData["Title"] = "Resources"; }
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h1 class="h2 mb-1">Campus resources</h1><p class="text-muted mb-0">Find the space or equipment you need.</p></div>
+@if (User.IsInRole("Admin")) { <a class="btn btn-primary" asp-action="Create">+ Add resource</a> }</div>
+<form method="get" class="card card-body mb-4"><div class="row g-2">
+<div class="col-md-4"><input class="form-control" name="search" value="@ViewBag.Search" placeholder="Search name..." /></div>
+<div class="col-md-3"><select class="form-select" name="category"><option value="">All categories</option>@foreach (string c in ViewBag.Categories) { <option value="@c" selected="@(ViewBag.Category as string == c)">@c</option> }</select></div>
+<div class="col-md-3"><input class="form-control" name="location" value="@ViewBag.Location" placeholder="Location..." /></div>
+<div class="col-md-2 d-grid"><button class="btn btn-dark">Filter</button></div></div></form>
+<div class="row g-3">
+@foreach (var item in Model) {
+<div class="col-md-6 col-lg-4"><div class="card h-100 resource-card"><div class="card-body">
+<div class="d-flex justify-content-between gap-2"><span class="badge text-bg-primary">@item.Category</span><span class="badge @(item.IsAvailable ? "text-bg-success" : "text-bg-secondary")">@(item.IsAvailable ? "Available" : "Unavailable")</span></div>
+<h5 class="mt-3">@item.Name</h5><p class="text-muted mb-1">📍 @item.Location</p><p class="small text-muted">Capacity: @item.Capacity</p><p>@(item.Description ?? "No description provided.")</p>
+<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm">View details</a>
+@if (User.IsInRole("Admin")) { <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Edit</a> }
+</div></div></div>
+}
+@if (!Model.Any()) { <div class="col-12"><div class="empty-state">No resources match your search.</div></div> }
+</div>
